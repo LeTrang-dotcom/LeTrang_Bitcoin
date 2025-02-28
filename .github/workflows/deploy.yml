@@ -1,0 +1,28 @@
+name: Deploy Next.js App
+
+on:
+  push:
+    branches:
+      - main # Chạy khi push code lên nhánh main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Start server (for testing)
+        run: npm run start

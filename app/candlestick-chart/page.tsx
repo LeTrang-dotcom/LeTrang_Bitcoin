@@ -1,6 +1,6 @@
 "use client";
 
-import { createChart } from "lightweight-charts";
+import { createChart, UTCTimestamp } from "lightweight-charts";
 import { useEffect, useRef } from "react";
 
 interface CandlestickData {
@@ -13,7 +13,6 @@ interface CandlestickData {
 
 interface CandlestickChartProps {
   data: CandlestickData[];
-  onLoadMoreData: (fromTime: number) => Promise<void>;
 }
 
 export default function CandlestickChart({ data }: CandlestickChartProps) {

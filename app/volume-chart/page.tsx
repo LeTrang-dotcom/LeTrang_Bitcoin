@@ -12,7 +12,6 @@ interface VolumeData {
 
 interface VolumeChartProps {
   data: VolumeData[];
-  onLoadMoreData: (fromTime: number) => Promise<void>;
 }
 
 const VolumeChart = ({ data }: VolumeChartProps) => {

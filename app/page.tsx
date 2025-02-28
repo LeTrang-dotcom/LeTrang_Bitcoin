@@ -32,11 +32,6 @@ export default function Home() {
     fetchData();
   }, [interval]);
 
-  const loadMoreData = async () => {
-    const oldData = await getBitcoinData(interval);
-    setData((prevData) => [...oldData, ...prevData]);
-  };
-
   const handleFetchCurrentPrice = async () => {
     const price = await getBitcoinPrice(Math.floor(Date.now() / 1000));
     setCurrentPrice(price.close);
@@ -101,11 +96,11 @@ export default function Home() {
               id="candlestick-chart"
             >
               <h2 className="text-xl font-bold">Candlestick Chart</h2>
-              <CandlestickChart data={data} onLoadMoreData={loadMoreData} />
+              <CandlestickChart data={data} />
             </div>
             <div className="w-full" ref={volumeChartRef} id="volume-chart">
               <h2 className="text-xl font-bold">Volume Chart</h2>
-              <VolumeChart data={data} onLoadMoreData={loadMoreData} />
+              <VolumeChart data={data} />
             </div>
           </div>
         )}

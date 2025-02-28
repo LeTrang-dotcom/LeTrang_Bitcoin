@@ -1,9 +1,11 @@
 import Navlinks from "./Navlinks";
 import ThemeComponent from "../Theme/ThemeComponent";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function NavbarComponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const candlestickChartRef = useRef<HTMLDivElement>(null);
+  const volumeChartRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -28,7 +30,10 @@ export default function NavbarComponent() {
             isMenuOpen ? "block" : "hidden"
           } lg:flex lg:items-center`}
         >
-          <Navlinks candlestickChartRef={null} volumeChartRef={null} />
+          <Navlinks
+            candlestickChartRef={candlestickChartRef}
+            volumeChartRef={volumeChartRef}
+          />
         </nav>
 
         <ThemeComponent />

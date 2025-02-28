@@ -3,7 +3,15 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Navlinks({ candlestickChartRef, volumeChartRef }) {
+interface NavlinksProps {
+  candlestickChartRef: React.RefObject<HTMLDivElement | null>;
+  volumeChartRef: React.RefObject<HTMLDivElement | null>;
+}
+
+export default function Navlinks({
+  candlestickChartRef,
+  volumeChartRef,
+}: NavlinksProps) {
   const [activeTab, setActiveTab] = useState("home");
 
   const isActiveTab = (tab: string) => tab === activeTab;

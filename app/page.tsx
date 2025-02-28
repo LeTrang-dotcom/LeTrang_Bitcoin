@@ -1,8 +1,8 @@
 "use client";
 
 import DefaultLayout from "./layouts/DefaultLayout";
-import CandlestickChart from "./candlestick-chart/page";
-import VolumeChart from "./volume-chart/page";
+import CandlestickChart from "./candlestick-chart/CandleStickChart";
+import VolumeChart from "./volume-chart/VolumeChart";
 import { useEffect, useState, useRef } from "react";
 import useServices from "@/services/useServices";
 

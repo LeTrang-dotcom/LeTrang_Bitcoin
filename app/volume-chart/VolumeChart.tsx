@@ -1,6 +1,6 @@
 "use client";
 
-import { createChart } from "lightweight-charts";
+import { createChart, UTCTimestamp } from "lightweight-charts";
 import { useEffect, useRef } from "react";
 
 interface VolumeData {
@@ -32,7 +32,7 @@ const VolumeChart = ({ data }: VolumeChartProps) => {
       });
       volumeSeries.setData(
         data.map((item) => ({
-          time: item.time as unknown as Time,
+          time: item.time as unknown as UTCTimestamp,
           value: item.volume,
           color: item.close > item.open ? "#26a69a" : "#ef5350",
         }))

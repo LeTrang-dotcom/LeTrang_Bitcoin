@@ -1,7 +1,9 @@
 "use client";
 
-import { createChart, UTCTimestamp } from "lightweight-charts";
+import { createChart, ISeriesApi } from "lightweight-charts";
 import { useEffect, useRef } from "react";
+
+import { Time } from "lightweight-charts";
 
 interface CandlestickData {
   time: number;
@@ -18,7 +20,7 @@ interface CandlestickChartProps {
 export default function CandlestickChart({ data }: CandlestickChartProps) {
   const chartContainer = useRef<HTMLDivElement>(null);
   const chartRef = useRef<ReturnType<typeof createChart> | null>(null);
-  const seriesRef = useRef<any>(null);
+  const seriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
 
   useEffect(() => {
     if (chartContainer.current && !chartRef.current) {
@@ -29,7 +31,15 @@ export default function CandlestickChart({ data }: CandlestickChartProps) {
       chartRef.current = chart;
 
       seriesRef.current = chart.addCandlestickSeries();
-      seriesRef.current.setData(data);
+      seriesRef.current.setData(
+        data.map((item) => ({
+          time: item.time as Time,
+          open: item.open,
+          high: item.high,
+          low: item.low,
+          close: item.close,
+        }))
+      );
 
       const resizeObserver = new ResizeObserver(() => {
         chart.applyOptions({
@@ -47,7 +57,15 @@ export default function CandlestickChart({ data }: CandlestickChartProps) {
 
   useEffect(() => {
     if (seriesRef.current && data.length > 0) {
-      seriesRef.current.setData(data);
+      seriesRef.current.setData(
+        data.map((item) => ({
+          time: item.time as Time,
+          open: item.open,
+          high: item.high,
+          low: item.low,
+          close: item.close,
+        }))
+      );
     }
   }, [data]);
 

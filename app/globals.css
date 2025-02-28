@@ -8,6 +8,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --navbar-bg: #ffffff;
+  --footer-bg: #ffffff;
+  --text: #171717;
+}
+
+.dark {
+  --navbar-bg: #1a1a1a;
+  --footer-bg: #1a1a1a;
+  --background: #1a1a1a;
+  --text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {

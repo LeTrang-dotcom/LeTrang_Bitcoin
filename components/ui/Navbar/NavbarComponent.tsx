@@ -13,7 +13,7 @@ export default function NavbarComponent() {
 
   return (
     <div>
-      <header className="flex flex-row justify-between items-center p-4 top-0 left-0 right-0 z-10 shadow-2xl bg-[var(--navbar-bg)]">
+      <header className="flex flex-row justify-between items-center p-4 top-0 left-0 right-0 z-10 shadow-2xl bg-[var(--navbar-bg)] fixed">
         <h1 className="text-3xl italic font-[600] text-yellow-400">Bitcoin</h1>
 
         <div className="lg:hidden">
